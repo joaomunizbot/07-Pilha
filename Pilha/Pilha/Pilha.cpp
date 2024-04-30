@@ -59,7 +59,7 @@ void menu()
 void inicializar()
 {
 
-	// se a lista j· possuir elementos
+	// se a lista j√° possuir elementos
 	// libera a memoria ocupada
 	NO* aux = topo;
 	while (aux != NULL) {
@@ -86,14 +86,42 @@ void push()
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
+	NO* aux = topo;
+
+	if (topo == NULL) {
+		topo = novo;
+	}
+	else {
+		novo->prox = topo;
+		topo = novo;
+	}
 
 
 }
 
 void pop()
 {
-
+	NO* aux = topo;
+	NO* paraExcluir = aux;
+	
+	if (topo == NULL) {
+		cout << "Lista vazia!\n";
+	}
+	else {
+		topo = topo->prox;
+		free(paraExcluir);
+	}
 	
 
+}
+void exibir() {
+	NO* aux = topo;
+	if(topo == NULL) {
+		cout << "Lista vazia!";
+	}
+	else {
+		cout << "Elementos: \n";
+		cout << topo->valor << endl;
+	}
 }
 
